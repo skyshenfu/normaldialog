@@ -1,5 +1,6 @@
 package com.pain.dialogutil;
 
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,12 +19,13 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new NormalDialogBuilder(MainActivity.this,NormalDialogBuilder.ONEBUTTONTYPE)
+                Dialog a= new NormalDialogBuilder(MainActivity.this,NormalDialogBuilder.ONEBUTTONTYPE)
                         .setTitleText("1234")
                         .setContentText("789")
                         .setLeftText("取消")
                         .setRightText("确定")
                         .setCenterText("我知道了")
+                        .setAnimation(NormalDialogBuilder.LEFTTORIGHT)
                         .setCenterTextColor(0xfff96060)
                         .setListener(new OneButtonDialog.OneClickListener() {
                             @Override
@@ -31,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "here", Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .build()
-                        .show();
+                        .build();
+                a.show();
             }
         });
     }

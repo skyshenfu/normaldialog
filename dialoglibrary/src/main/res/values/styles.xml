@@ -8,4 +8,12 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowIsFloating">false</item>
     </style>
+    <style name="DialogAnimationX">
+        <item name="android:windowEnterAnimation">@anim/left_to_right_enter</item>
+        <item name="android:windowExitAnimation">@anim/left_to_right_exit</item>
+    </style>
+    <style name="DialogAnimationY">
+        <item name="android:windowEnterAnimation">@anim/top_to_bottom_enter</item>
+        <item name="android:windowExitAnimation">@anim/top_to_bottom_exit</item>
+    </style>
 </resources>

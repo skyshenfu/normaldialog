@@ -19,12 +19,21 @@ public class NormalDialogBuilder implements DialogSetting {
 
     public static final int ONEBUTTONTYPE = 1;
     public static final int TWOBUTTONTYPE = 2;
+
+    public static final int LEFTTORIGHT = 11;
+    public static final int TOPTOBOTTOM = 12;
+
     private int type = TWOBUTTONTYPE;
+    private int animationType;
     private Context context;
 
     @IntDef({ONEBUTTONTYPE,TWOBUTTONTYPE})
     @Retention(RetentionPolicy.SOURCE)
     public @interface DialogType{}
+
+    @IntDef({LEFTTORIGHT,TOPTOBOTTOM})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface DialogAnimType{}
 
     //标题
     private int titleTextColor;
@@ -127,6 +136,12 @@ public class NormalDialogBuilder implements DialogSetting {
     }
 
     @Override
+    public DialogSetting setAnimation(@DialogAnimType int animationType) {
+        this.animationType=animationType;
+        return this;
+    }
+
+    @Override
     public DialogSetting setListener(NormalClickInterface listener) {
         if (type == ONEBUTTONTYPE) {
             this.onClickListener=listener;
@@ -193,5 +208,7 @@ public class NormalDialogBuilder implements DialogSetting {
         return centerTextContent;
     }
 
-
+    public int getAnimationType() {
+        return animationType;
+    }
 }

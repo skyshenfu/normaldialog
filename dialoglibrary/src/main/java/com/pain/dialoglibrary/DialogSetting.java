@@ -27,6 +27,7 @@ public interface DialogSetting {
 
     DialogSetting setCenterText(String centerText);
     DialogSetting setCenterTextColor(int centerColor);
+    DialogSetting setAnimation(int animationType);
 
 
     Dialog build();

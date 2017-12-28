@@ -59,6 +59,11 @@ public class OneButtonDialog extends Dialog {
         initSetting();
         setContentView(rootView);
         setCancelable(true);
+        if (normalDialogBuilder.getAnimationType()==NormalDialogBuilder.LEFTTORIGHT){
+            getWindow().setWindowAnimations(R.style.DialogAnimationX);
+        }else  if (normalDialogBuilder.getAnimationType()==NormalDialogBuilder.TOPTOBOTTOM){
+            getWindow().setWindowAnimations(R.style.DialogAnimationY);
+        }
         getWindow().setGravity(Gravity.CENTER);
         getWindow().setLayout(width, WindowManager.LayoutParams.WRAP_CONTENT);
     }
