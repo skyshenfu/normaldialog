@@ -12,7 +12,8 @@ import java.lang.annotation.RetentionPolicy;
  * 个人github地址：http://www.github.com/skyshenfu
  * 日期：2017/12/27
  * 版本：1.0.0
- * 描述：使用方法 new NormalDialogBuilder(context,ty).b
+ * 描述：使用方法 new NormalDialogBuilder(context,type).build直接生成一个dialog默认生成两个按钮的dialog,文字颜色及内容、均可以自定义
+ * 由于可选属性较多，所以这里使用适配器模式
  */
 
 public class NormalDialogBuilder implements DialogSetting {
@@ -60,12 +61,18 @@ public class NormalDialogBuilder implements DialogSetting {
 
     private NormalClickInterface onClickListener;
 
-
+    /**
+     * 默认使用此方法，即生成一个含两个按钮的dialog
+     * @param context
+     */
     public NormalDialogBuilder(Context context) {
         this.context = context;
         this.type = TWOBUTTONTYPE;
     }
-
+    /**
+     * 想生成一个按钮的dialog时使用这个方法 将type指定为ONEBUTTONTYPE
+     * @param context
+     */
     public NormalDialogBuilder(Context context, @DialogType int type) {
         this.type = type;
         this.context = context;
@@ -135,25 +142,32 @@ public class NormalDialogBuilder implements DialogSetting {
         return this;
     }
 
+    /**
+     *
+     * @param animationType 动画类型，有左->右,上->下两种 LEFTTORIGHT，TOPTOBOTTOM
+     * @return
+     */
     @Override
     public DialogSetting setAnimation(@DialogAnimType int animationType) {
         this.animationType=animationType;
         return this;
     }
 
+    /**
+     *
+     * @param listener 点击事件监听器的接口
+     * @return
+     */
     @Override
     public DialogSetting setListener(NormalClickInterface listener) {
-        if (type == ONEBUTTONTYPE) {
             this.onClickListener=listener;
-
-        } else if (type == TWOBUTTONTYPE) {
-            this.onClickListener=listener;
-
-        }
-        return this;
+            return this;
     }
 
-
+    /**
+     * 根据type自动生成Dialog 默认生成TWOBUTTONTYPE即含有两个按钮的dialog
+     * @return
+     */
     @Override
     public Dialog build() {
         if (type==ONEBUTTONTYPE){

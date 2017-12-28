@@ -18,7 +18,7 @@ import android.view.WindowManager;
  * 个人github地址：http://www.github.com/skyshenfu
  * 日期：2017/12/28
  * 版本：1.0.0
- * 描述：
+ * 描述：此类直接生产一个从底部滑出，类似ios底部列表对话框的dialog，不使用builder
  */
 
 public class BottomListDialog extends Dialog {
@@ -33,14 +33,14 @@ public class BottomListDialog extends Dialog {
     private boolean needSpace=true;
 
 
-    public BottomListDialog(@NonNull Context context, String[] items, ItemClickListener itemClickListener, @ColorRes int itemColor) {
-        super(context, R.style.NormalDialog);
-        this.mContext = context;
-        this.items=items;
-        this.itemClickListener=itemClickListener;
-        this.itemColor=itemColor;
-        init();
-    }
+
+
+    /**
+     * 不需要设置字体颜色，以及最后一项间距是使用此构造方法
+     * @param context 上下文
+     * @param items 数组，每一项都为对应的条目的文字
+     * @param itemClickListener 每一项的点击事件
+     */
     public BottomListDialog(@NonNull Context context, String[] items, ItemClickListener itemClickListener) {
         super(context, R.style.NormalDialog);
         this.mContext = context;
@@ -48,6 +48,14 @@ public class BottomListDialog extends Dialog {
         this.itemClickListener=itemClickListener;
         init();
     }
+
+    /**
+     * 需要去除最后一项间距时调用此方法
+     *@param context 上下文
+     * @param items 数组，每一项都为对应的条目的文字
+     * @param itemClickListener 每一项的点击事件
+     * @param needSpace 是否设置和最后一项的间隔（模仿ios）默认为是
+     */
     public BottomListDialog(@NonNull Context context, String[] items, ItemClickListener itemClickListener,Boolean needSpace) {
         super(context, R.style.NormalDialog);
         this.mContext = context;
@@ -56,6 +64,31 @@ public class BottomListDialog extends Dialog {
         this.needSpace=needSpace;
         init();
     }
+
+    /**
+     *需要设置文字颜色时调用此方法
+     *@param  context 上下文
+     * @param items 数组，每一项都为对应的条目的文字
+     * @param itemClickListener 每一项的点击事件
+     * @param itemColor 目标颜色对应的资源文件
+     */
+    public BottomListDialog(@NonNull Context context, String[] items, ItemClickListener itemClickListener, @ColorRes int itemColor) {
+        super(context, R.style.NormalDialog);
+        this.mContext = context;
+        this.items=items;
+        this.itemClickListener=itemClickListener;
+        this.itemColor=itemColor;
+        init();
+    }
+
+    /**
+     *需要设置文字颜色,和去除底部间距时调用此方法
+     *@param  context 上下文
+     * @param items 数组，每一项都为对应的条目的文字
+     * @param itemClickListener 每一项的点击事件
+     * @param needSpace 是否设置和最后一项的间隔（模仿ios）默认为是
+     * @param itemColor 目标颜色对应的资源文件
+     */
     public BottomListDialog(@NonNull Context context, String[] items, ItemClickListener itemClickListener,Boolean needSpace, @ColorRes int itemColor) {
         super(context, R.style.NormalDialog);
         this.mContext = context;
@@ -83,9 +116,4 @@ public class BottomListDialog extends Dialog {
         getWindow().setGravity(Gravity.BOTTOM);
     }
 
-    private void initSetting() {
-      /*  if (normalDialogBuilder != null) {
-
-        }*/
-    }
 }
