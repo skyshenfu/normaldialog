@@ -2,7 +2,10 @@ package com.pain.dialoglibrary;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.text.TextUtils;
+import android.support.annotation.IntDef;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * Created by zty
@@ -12,11 +15,16 @@ import android.text.TextUtils;
  * 描述：
  */
 
-public class NormalDialogBuilder implements DialogSetting{
-/*    public static final int ONEBUTTONTYPE=1;
-    public static final int TWOBUTTONTYPE=2;
-    private int type=0;*/
+public class NormalDialogBuilder implements DialogSetting {
+
+    public static final int ONEBUTTONTYPE = 1;
+    public static final int TWOBUTTONTYPE = 2;
+    private int type = TWOBUTTONTYPE;
     private Context context;
+
+    @IntDef({ONEBUTTONTYPE,TWOBUTTONTYPE})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface DialogType{}
 
     //标题
     private int titleTextColor;
@@ -35,77 +43,112 @@ public class NormalDialogBuilder implements DialogSetting{
     private int rightTextColor;
     private String rightTextContent;
 
-    private NormalDialog.ClickListener onClickListener;
 
+    //中间按钮文字
+    private int centerTextColor;
+    private String centerTextContent;
+
+
+    private NormalClickInterface onClickListener;
 
 
     public NormalDialogBuilder(Context context) {
-        this.context=context;
-        //this.type = TWOBUTTONTYPE;
+        this.context = context;
+        this.type = TWOBUTTONTYPE;
     }
-/*    public NormalDialogBuilder(Context context, int type) {
+
+    public NormalDialogBuilder(Context context, @DialogType int type) {
         this.type = type;
-    }*/
+        this.context = context;
 
-
+    }
+    public NormalClickInterface getOnClickListener() {
+        return onClickListener;
+    }
 
     @Override
     public DialogSetting setTitleTextColor(int titleColor) {
-        titleTextColor=titleColor;
+        titleTextColor = titleColor;
         return this;
     }
 
     @Override
     public DialogSetting setContentTextColor(int contentColor) {
-        contentTextColor=contentColor;
+        contentTextColor = contentColor;
         return this;
     }
 
     @Override
     public DialogSetting setButtonLeftTextColor(int leftColor) {
-        leftTextColor=leftColor;
+        leftTextColor = leftColor;
         return this;
     }
 
     @Override
     public DialogSetting setButtonRightTextColor(int rightColor) {
-        rightTextColor=rightColor;
+        rightTextColor = rightColor;
         return this;
     }
 
     @Override
     public DialogSetting setTitleText(String titleText) {
-        titleTextContent=titleText;
+        titleTextContent = titleText;
         return this;
     }
 
     @Override
     public DialogSetting setContentText(String contentText) {
-        this.contentText=contentText;
+        this.contentText = contentText;
         return this;
     }
 
     @Override
     public DialogSetting setLeftText(String leftText) {
-        this.leftTextContent=leftText;
+        this.leftTextContent = leftText;
         return this;
     }
 
     @Override
     public DialogSetting setRightText(String rightText) {
-        this.rightTextContent=rightText;
+        this.rightTextContent = rightText;
         return this;
     }
 
     @Override
-    public DialogSetting setListener(NormalDialog.ClickListener listener) {
-        this.onClickListener=listener;
+    public DialogSetting setCenterText(String centerText) {
+        this.centerTextContent=centerText;
         return this;
     }
 
     @Override
-    public NormalDialog build() {
-        return new NormalDialog(context,this);
+    public DialogSetting setCenterTextColor(int centerColor) {
+        this.centerTextColor=centerColor;
+        return this;
+    }
+
+    @Override
+    public DialogSetting setListener(NormalClickInterface listener) {
+        if (type == ONEBUTTONTYPE) {
+            this.onClickListener=listener;
+
+        } else if (type == TWOBUTTONTYPE) {
+            this.onClickListener=listener;
+
+        }
+        return this;
+    }
+
+
+    @Override
+    public Dialog build() {
+        if (type==ONEBUTTONTYPE){
+            return new OneButtonDialog(context, this);
+
+        }else if (type==TWOBUTTONTYPE){
+            return new TwoButtonDialog(context, this);
+        }else {
+            return null;
+        }
     }
 
 
@@ -142,9 +185,13 @@ public class NormalDialogBuilder implements DialogSetting{
         return rightTextContent;
     }
 
-
-    public NormalDialog.ClickListener getOnClickListener() {
-        return onClickListener;
+    public int getCenterTextColor() {
+        return centerTextColor;
     }
+
+    public String getCenterTextContent() {
+        return centerTextContent;
+    }
+
 
 }

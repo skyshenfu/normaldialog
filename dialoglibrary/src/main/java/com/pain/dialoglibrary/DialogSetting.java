@@ -1,5 +1,7 @@
 package com.pain.dialoglibrary;
 
+import android.app.Dialog;
+
 /**
  * Created by zty
  * 个人github地址：http://www.github.com/skyshenfu
@@ -16,11 +18,17 @@ public interface DialogSetting {
 
     DialogSetting setTitleText(String titleText);
     DialogSetting setContentText(String contentText);
+
+
+    DialogSetting setListener(NormalClickInterface listener);
+
     DialogSetting setLeftText(String leftText);
     DialogSetting setRightText(String rightText);
 
-    DialogSetting setListener(NormalDialog.ClickListener listener);
+    DialogSetting setCenterText(String centerText);
+    DialogSetting setCenterTextColor(int centerColor);
 
-    NormalDialog build();
+
+    Dialog build();
 
 }
