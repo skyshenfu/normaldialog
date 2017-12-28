@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
  * 个人github地址：http://www.github.com/skyshenfu
  * 日期：2017/12/27
  * 版本：1.0.0
- * 描述：
+ * 描述：使用方法 new NormalDialogBuilder(context,ty).b
  */
 
 public class NormalDialogBuilder implements DialogSetting {

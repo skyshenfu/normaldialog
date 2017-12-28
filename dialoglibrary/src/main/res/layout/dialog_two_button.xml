@@ -13,7 +13,7 @@
         android:id="@+id/title_text_View"
         android:maxLines="1"
         android:maxLength="15"
-        android:textColor="#000"
+        android:textColor="@color/color_black"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_width="wrap_content"
@@ -29,13 +29,11 @@
         android:textSize="14sp"
         android:maxLines="2"
         android:text="这里是提示"
-        android:textColor="#000"
+        android:textColor="@color/color_black"
         />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
         android:layout_marginTop="20dp"
         android:background="#f0f0f0"
         />
@@ -51,7 +49,7 @@
             android:paddingBottom="10dp"
             android:layout_width="0dp"
             android:gravity="center"
-            android:textColor="#007aff"
+            android:textColor="@color/color_blue"
             android:text="确定"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -69,7 +67,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:gravity="center"
-            android:textColor="#007aff"
+            android:textColor="@color/color_blue"
             android:text="取消"
             android:layout_weight="1"
             android:layout_height="wrap_content" />

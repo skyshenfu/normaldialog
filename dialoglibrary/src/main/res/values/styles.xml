@@ -8,6 +8,14 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowIsFloating">false</item>
     </style>
+    <style name="BottomDialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:gravity">bottom</item>
+    </style>
     <style name="DialogAnimationX">
         <item name="android:windowEnterAnimation">@anim/left_to_right_enter</item>
         <item name="android:windowExitAnimation">@anim/left_to_right_exit</item>
@@ -15,5 +23,9 @@
     <style name="DialogAnimationY">
         <item name="android:windowEnterAnimation">@anim/top_to_bottom_enter</item>
         <item name="android:windowExitAnimation">@anim/top_to_bottom_exit</item>
+    </style>
+    <style name="DialogAnimationBottom">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
 </resources>
