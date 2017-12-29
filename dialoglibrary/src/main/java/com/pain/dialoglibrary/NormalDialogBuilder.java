@@ -2,7 +2,9 @@ package com.pain.dialoglibrary;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.support.annotation.ColorRes;
 import android.support.annotation.IntDef;
+import android.support.v4.content.ContextCompat;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -37,25 +39,25 @@ public class NormalDialogBuilder implements DialogSetting {
     public @interface DialogAnimType{}
 
     //标题
-    private int titleTextColor;
+    private int titleTextColor=-1;
     private String titleTextContent;
 
 
     //内容
-    private int contentTextColor;
+    private int contentTextColor=-1;
     private String contentText;
 
     //左边文字
-    private int leftTextColor;
+    private int leftTextColor=-1;
     private String leftTextContent;
 
     //右边文字
-    private int rightTextColor;
+    private int rightTextColor=-1;
     private String rightTextContent;
 
 
     //中间按钮文字
-    private int centerTextColor;
+    private int centerTextColor=-1;
     private String centerTextContent;
 
 
@@ -83,26 +85,26 @@ public class NormalDialogBuilder implements DialogSetting {
     }
 
     @Override
-    public DialogSetting setTitleTextColor(int titleColor) {
-        titleTextColor = titleColor;
+    public DialogSetting setTitleTextColor(@ColorRes int titleColor) {
+        titleTextColor = ContextCompat.getColor(context,titleColor);
         return this;
     }
 
     @Override
-    public DialogSetting setContentTextColor(int contentColor) {
-        contentTextColor = contentColor;
+    public DialogSetting setContentTextColor(@ColorRes int contentColor) {
+        contentTextColor = ContextCompat.getColor(context,contentColor);
         return this;
     }
 
     @Override
-    public DialogSetting setButtonLeftTextColor(int leftColor) {
-        leftTextColor = leftColor;
+    public DialogSetting setButtonLeftTextColor(@ColorRes int leftColor) {
+        leftTextColor = ContextCompat.getColor(context,leftColor);
         return this;
     }
 
     @Override
-    public DialogSetting setButtonRightTextColor(int rightColor) {
-        rightTextColor = rightColor;
+    public DialogSetting setButtonRightTextColor(@ColorRes int rightColor) {
+        rightTextColor = ContextCompat.getColor(context,rightColor);
         return this;
     }
 
@@ -137,8 +139,8 @@ public class NormalDialogBuilder implements DialogSetting {
     }
 
     @Override
-    public DialogSetting setCenterTextColor(int centerColor) {
-        this.centerTextColor=centerColor;
+    public DialogSetting setCenterTextColor(@ColorRes int centerColor) {
+        this.centerTextColor=ContextCompat.getColor(context,centerColor);
         return this;
     }
 

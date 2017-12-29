@@ -70,15 +70,15 @@ public class OneButtonDialog extends Dialog {
 
     private void initSetting() {
         if (normalDialogBuilder !=null){
-            if (normalDialogBuilder.getTitleTextColor()!=0){
+            if (normalDialogBuilder.getTitleTextColor()!=-1){
                 titleTextView.setTextColor(normalDialogBuilder.getTitleTextColor());
             }
 
-            if (normalDialogBuilder.getContentTextColor()!=0){
+            if (normalDialogBuilder.getContentTextColor()!=-1){
                 contentTextView.setTextColor(normalDialogBuilder.getContentTextColor());
 
             }
-            if (normalDialogBuilder.getCenterTextColor()!=0){
+            if (normalDialogBuilder.getCenterTextColor()!=-1){
                 buttonTextView.setTextColor(normalDialogBuilder.getCenterTextColor());
 
             }

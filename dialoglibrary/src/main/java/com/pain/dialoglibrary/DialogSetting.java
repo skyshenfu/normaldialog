@@ -1,6 +1,7 @@
 package com.pain.dialoglibrary;
 
 import android.app.Dialog;
+import android.support.annotation.ColorRes;
 
 /**
  * Created by zty
@@ -11,10 +12,12 @@ import android.app.Dialog;
  */
 
 public interface DialogSetting {
-    DialogSetting setTitleTextColor(int titleColor);
-    DialogSetting setContentTextColor(int contentColor);
-    DialogSetting setButtonLeftTextColor(int leftColor);
-    DialogSetting setButtonRightTextColor(int rightColor);
+    DialogSetting setTitleTextColor(@ColorRes int titleColor);
+    DialogSetting setContentTextColor(@ColorRes int contentColor);
+    DialogSetting setButtonLeftTextColor(@ColorRes int leftColor);
+    DialogSetting setButtonRightTextColor(@ColorRes int rightColor);
+    DialogSetting setCenterTextColor(@ColorRes int centerColor);
+
 
     DialogSetting setTitleText(String titleText);
     DialogSetting setContentText(String contentText);
@@ -26,7 +29,6 @@ public interface DialogSetting {
     DialogSetting setRightText(String rightText);
 
     DialogSetting setCenterText(String centerText);
-    DialogSetting setCenterTextColor(int centerColor);
     DialogSetting setAnimation(int animationType);
 
 

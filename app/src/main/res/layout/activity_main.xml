@@ -27,7 +27,7 @@
         android:onClick="onClick"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:text="自定义内容及颜色"
+        android:text="双按钮自定义内容及颜色"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
@@ -35,7 +35,7 @@
         android:onClick="onClick"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:text="动画左到右"
+        android:text="单按钮自定义内容及颜色"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
@@ -43,7 +43,7 @@
         android:onClick="onClick"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:text="动画上到下"
+        android:text="动画左到右"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
@@ -51,7 +51,7 @@
         android:onClick="onClick"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:text="底部dialog 默认"
+        android:text="动画上到下"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
@@ -59,7 +59,7 @@
         android:onClick="onClick"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:text="底部dialog 无空隙"
+        android:text="底部dialog 默认"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
@@ -67,9 +67,24 @@
         android:onClick="onClick"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:text="底部dialog 无空隙"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button9"
+        android:onClick="onClick"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:text="底部dialog 改颜色"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+    <Button
+        android:id="@+id/button10"
+        android:onClick="onClick"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:text="底部dialog改颜色+无空隙"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
