@@ -52,25 +52,21 @@ dependencies {
 2. 单按钮
 
 ```java
-	new NormalDialogBuilder(MainActivity.this)
-	    .setTitleText("打工是不可能的")
-	    .setContentText("这辈子不可能打工")
-	    .setLeftText("确定呀")
-	    .setRightText("取消么")
-	    .setButtonRightTextColor(R.color.color_orange)
-	    .setButtonLeftTextColor(R.color.color_green)
-	    .setContentTextColor(R.color.color_red)
-	    .setTitleTextColor(R.color.color_blue)
-	    .setListener(new TwoButtonDialog.TwoClickListener() {
-	        @Override
-	        public void onLeftClick(View view) {
-	        }
+    new NormalDialogBuilder(MainActivity.this,NormalDialogBuilder.ONEBUTTONTYPE)
+        .setTitleText("打工是不可能的")
+        .setContentText("这辈子不可能打工")
+        .setContentTextColor(R.color.color_red)
+        .setTitleTextColor(R.color.color_blue)
+        .setCenterText("Yes,I do")
+        .setCenterTextColor(R.color.color_orange)
+        .setListener(new OneButtonDialog.OneClickListener() {
 
-	        @Override
-	        public void onRightClick(View view) {
-
-	        }
-	    }).build().show();
+            @Override
+            public void onCenterClick(View view) {
+                Toast.makeText(MainActivity.this, "点击了中间", Toast.LENGTH_SHORT).show();
+            }
+        })
+        .build().show();
 ```
 
 3. 底部dialog
